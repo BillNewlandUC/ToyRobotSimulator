@@ -52,6 +52,81 @@ namespace ToyRobotSimulator.Tests
             Assert.IsNull(result);
         }
 
-        
+        [Test]
+        public void Left_Valid()
+        {
+            var robot = new Robot(_map);
+            robot.Place(0,0, Direction.North);
+            robot.Left();
+            var actual = robot.Report();
+            Assert.AreEqual(Direction.West, actual.Direction);
+        }
+
+        [Test]
+        public void Left_NotPlaced()
+        {
+            var robot = new Robot(_map);           
+            robot.Left();
+            var actual = robot.Report();
+            Assert.IsNull(actual);
+        }
+
+        [Test]
+        public void Right_Valid()
+        {
+            var robot = new Robot(_map);
+            robot.Place(0, 0, Direction.West);
+            robot.Right();
+            var actual = robot.Report();
+            Assert.AreEqual(Direction.North, actual.Direction);
+        }
+
+        [Test]
+        public void Right_NotPlaced()
+        {
+            var robot = new Robot(_map);
+            robot.Right();
+            var actual = robot.Report();
+            Assert.IsNull(actual);
+        }
+
+        [Test]
+        public void Move_Valid()
+        {
+            var robot = new Robot(_map);
+            robot.Place(2, 2, Direction.North);
+            robot.Move();
+            var expected = JsonSerializer.Serialize(new Location { Direction = Direction.North, X = 2, Y = 3 });
+            var actual = JsonSerializer.Serialize(robot.Report());
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
+        [Test,Sequential]
+        public void Move_Invalid(
+            [Values(Direction.North,Direction.East,Direction.South,Direction.West)] Direction direction,
+            [Values(0,4,0,0)] int x,
+            [Values(4,0,0,0)] int y
+            )
+        {
+            var robot = new Robot(_map);
+            robot.Place(x,y,direction);
+            robot.Move();
+            var expected = JsonSerializer.Serialize(new Location { Direction = direction, X = x, Y = y });
+            var actual = JsonSerializer.Serialize(robot.Report());
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [Test]
+        public void Move_NotPlaced()
+        {
+            var robot = new Robot(_map);           
+            robot.Move();
+            var result = robot.Report();
+            Assert.IsNull(result);
+        }
+
     }
 }

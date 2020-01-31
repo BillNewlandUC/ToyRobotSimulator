@@ -27,37 +27,5 @@ namespace ToyRobotSimulator.Tests
         }
 
 
-        [Test]
-        public void IsValidCoordinates_InValidYCordinates()
-        {
-            var map = new Map(10, 10);
-            var result = map.IsValidCoordinates(0, 10);
-            Assert.False(result);
-        }
-
-        [Test]
-        public void IsValidCoordinates_InValidXYCordinates()
-        {
-            var map = new Map(10, 10);
-            var result = map.IsValidCoordinates(10, 10);
-            Assert.False(result);
-        }
-
-        [Test]
-        public void IsValidCoordinates_NegativeXCordinate()
-        {
-            var map = new Map(10, 10);
-            var result = map.IsValidCoordinates(-1, 0);
-            Assert.False(result);
-        }
-
-        [Test]
-        public void IsValidCoordinates_NegativeYCordinate()
-        {
-            var map = new Map(10, 10);
-            var result = map.IsValidCoordinates(0,-1);
-            Assert.False(result);
-        }
-
     }
 }
