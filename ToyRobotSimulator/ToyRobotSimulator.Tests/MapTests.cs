@@ -8,11 +8,6 @@ namespace ToyRobotSimulator.Tests
     [TestFixture]
     public class MapTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void IsValidCoordinates_ValidCordinates()
         {
@@ -21,12 +16,13 @@ namespace ToyRobotSimulator.Tests
             Assert.True(result);
         }
 
-        [Test]
-        public void IsValidCoordinates_InValidXCordinates()
+        [Test, Sequential]
+        public void IsValidCoordinates_InValidCordinates(
+            [Values(0, -1, 0, 10, 10)] int x,
+            [Values(-1, 0, 10, 0, 10)] int y)
         {
             var map = new Map(10, 10);
-            // The map is zero-indexed so 10 is off the map
-            var result = map.IsValidCoordinates(10, 0);
+              var result = map.IsValidCoordinates(x,y);
             Assert.False(result);
         }
 
