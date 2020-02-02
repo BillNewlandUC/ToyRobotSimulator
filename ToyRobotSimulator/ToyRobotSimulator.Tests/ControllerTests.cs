@@ -5,7 +5,7 @@ namespace ToyRobotSimulator.Tests
 {
 
     [TestFixture]
-    public class CommandParserTests
+    public class ControllerTests
     {
         private IMap _map;
         private Robot _robot;
