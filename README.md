@@ -13,7 +13,6 @@ The​ ​robot responds to the following commands:
 - RIGHT - will​ ​rotate​ ​the​ ​robot​ ​90​ ​degrees​ ​clockwise ​without changing its position.
 - REPORT - output the position and direction of the robot, e.g. 1,4,North.
 
-
 Eg.
 
 ~~~
@@ -21,6 +20,20 @@ PLACE​ ​0,0,NORTH
 MOVE
 REPORT
 ~~~
+
+There are two ways of stating the application:
+
+~~~
+> ToyRobotSimulator.exe ./ToyRobotSimulator/RobotCommand.txt
+~~~
+
+and
+
+~~~
+> ToyRobotSimulator.exe 
+~~~
+
+The former reads the commands from a text file; the latter allows users to enter commands via the console.
 
 ### File
 
@@ -36,10 +49,6 @@ If a file name and path is passed the application will open the file and read it
 ### Console
 
 If no path is passed then the application will open a console where the user will enter a series of commands that will be enacted in sequence once the GO command has been issued. GO will reset the robot and remoe it from the tabletop; any subsequent commands are treated afresh.
-
-~~~
-> ToyRobotSimulator.exe 
-~~~
 
 The console has the following addditional commands:
 
