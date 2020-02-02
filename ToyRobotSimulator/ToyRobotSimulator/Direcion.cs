@@ -1,5 +1,4 @@
-﻿using System;
-namespace ToyRobotSimulator
+﻿namespace ToyRobotSimulator
 {
 
     public enum Direction

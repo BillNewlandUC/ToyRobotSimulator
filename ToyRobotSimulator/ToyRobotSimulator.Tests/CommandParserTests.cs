@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using NUnit.Framework;
 
 namespace ToyRobotSimulator.Tests
@@ -30,7 +29,7 @@ namespace ToyRobotSimulator.Tests
             [Values("PLACE 1\nREPORT","PLACE 1,3\nREPORT","PLACE 1,3,FOO\nREPORT")] string cmd
             )
         {
-            var command = new CommandParser(_robot);            
+            var command = new Controller(_robot);            
             var actual = command.Run(cmd);
             Assert.IsEmpty(actual);
         }
@@ -38,7 +37,7 @@ namespace ToyRobotSimulator.Tests
         [TestCaseSource(typeof(MoveTestData), nameof(MoveTestData.TestCases))]
         public string Run_TestCases(string cmd)
         {
-            var command = new CommandParser(_robot);
+            var command = new Controller(_robot);
             return command.Run(cmd).ToUpper();
         }
 

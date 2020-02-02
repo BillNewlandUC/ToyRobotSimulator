@@ -1,7 +1,6 @@
-﻿using System;
-namespace ToyRobotSimulator
+﻿namespace ToyRobotSimulator
 {
-    public class Robot
+    public class Robot : IRobot
     {
         private readonly IMap _map;
         private bool _placed = false;
@@ -28,6 +27,15 @@ namespace ToyRobotSimulator
             _placed = true;
             _location = new Location { Direction = direction, X = x, Y = y };
             return true;
+        }
+
+        /// <summary>
+        /// Removes the robot from the map, if the robot has not been placed
+        /// this has no effect
+        /// </summary>
+        public void Unplace()
+        {
+            _location = null;
         }
 
         /// <summary>

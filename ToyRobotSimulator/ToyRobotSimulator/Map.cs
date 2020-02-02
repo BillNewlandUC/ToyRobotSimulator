@@ -1,5 +1,4 @@
-﻿using System;
-namespace ToyRobotSimulator
+﻿namespace ToyRobotSimulator
 {
     /// <summary>
     /// The map represents the terrain which the robot(s) inhabit, it is
