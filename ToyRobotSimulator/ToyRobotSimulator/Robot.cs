@@ -3,7 +3,6 @@
     public class Robot : IRobot
     {
         private readonly IMap _map;
-        private bool _placed = false;
 
         private Location _location;
 
@@ -24,7 +23,6 @@
         {
             if (!_map.IsValidCoordinates(x, y))
                 return false;
-            _placed = true;
             _location = new Location { Direction = direction, X = x, Y = y };
             return true;
         }
