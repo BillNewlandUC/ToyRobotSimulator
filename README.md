@@ -5,15 +5,44 @@ The​ ​application​ ​is​ ​a​ ​simulation​ ​of​ ​a​ ​t
 
 ## Instructions
 
-This is a console application, it will open with a series of instructions and user will enter a series of commands that will be enacted in sequence once the GO command has been issued. GO will reset the robot and remoe it from the tabletop; any subsequent commands are treated afresh.
-
-The​ ​application​ ​will accept ​any​ ​one​ ​of​ ​the​ ​following​ ​commands:
+The​ ​robot responds to the following commands:
 
 - PLACE​ _​x,y,f_ - ​will​ ​put​ ​the​ ​toy​ ​robot​ ​on​ ​the​ ​table​ ​in​ ​position​ _​X, Y_  ​and​ ​facing​ ​NORTH,​ ​SOUTH, EAST​ ​or​ ​WEST.
 - MOVE - ​will​ ​move​ ​the​ ​toy​ ​robot​ ​one​ ​unit​ ​forward​ ​in​ ​the​ ​direction​ ​it​ ​is​ ​currently​ ​facing.
 - LEFT - will​ ​rotate​ ​the​ ​robot​ ​90​ ​degrees​ ​anti-clockwise ​without changing its position.
 - RIGHT - will​ ​rotate​ ​the​ ​robot​ ​90​ ​degrees​ ​clockwise ​without changing its position.
 - REPORT - output the position and direction of the robot, e.g. 1,4,North.
+
+
+Eg.
+
+~~~
+PLACE​ ​0,0,NORTH
+MOVE
+REPORT
+~~~
+
+### File
+
+If a file name and path is passed the application will open the file and read its contents before displaying any output.
+
+~~~
+> ToyRobotSimulator.exe ./ToyRobotSimulator/RobotCommand.txt
+> Welcome to the Toy Robot Simulator!
+> ===================================
+> Output: 0,2,West
+~~~
+
+### Console
+
+If no path is passed then the application will open a console where the user will enter a series of commands that will be enacted in sequence once the GO command has been issued. GO will reset the robot and remoe it from the tabletop; any subsequent commands are treated afresh.
+
+~~~
+> ToyRobotSimulator.exe 
+~~~
+
+The console has the following addditional commands:
+
 - GO - execute the preceeding sequence of commands.
 - QUIT - exit the program.
 
@@ -27,13 +56,3 @@ The​ ​application​ ​will accept ​any​ ​one​ ​of​ ​the​ �
 
 - The​ ​toy​ ​robot​ ​must​ ​not​ ​fall​ ​off​ ​the​ ​table​ ​during​ ​movement.​ ​This​ ​also​ ​includes​ ​the​ ​initial placement​ ​of​ ​the​ ​toy​ ​robot.
 - Any​ ​move​ ​that​ ​would​ ​cause​ ​the​ ​robot​ ​to​ ​fall​ ​must​ ​be​ ​ignored.
-
-Eg.
-
-~~~
-PLACE​ ​0,0,NORTH
-MOVE
-REPORT
-GO
-Output:​ ​0,1,NORTH
-~~~

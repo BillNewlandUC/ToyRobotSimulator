@@ -115,13 +115,16 @@ namespace ToyRobotSimulator
         /// <param name="path"></param>
         public void UseFile(string path)
         {
-            var file = new StreamReader(path);
-            var cmd = file.ReadToEnd();
-            file.Close();
-            var output = Run(cmd);
-            Console.WriteLine("Welcome to the Toy Robot Simulator!");
-            Console.WriteLine("===================================");
-            Console.WriteLine("Output: " + output);
+            if (File.Exists(path))
+            {
+                var file = new StreamReader(path);
+                var cmd = file.ReadToEnd();
+                file.Close();
+                var output = Run(cmd);
+                Console.WriteLine("Welcome to the Toy Robot Simulator!");
+                Console.WriteLine("===================================");
+                Console.WriteLine("Output: " + output);
+            }
         }
 
     }
